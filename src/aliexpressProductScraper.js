@@ -41,7 +41,8 @@ async function AliexpressProductScraper(productId, feedbackLimit, puppeterHeader
             variant_paths = [];
             let openDropdown = false;
             if (product.properties.length == 0) {
-                throw new Error("Chris- no variants");
+                return [];
+                // throw new Error("Chris- no variants");
             }
             //Recursively iterates over variant combinations.
             const generatePaths = async (path) => {
@@ -260,7 +261,7 @@ async function AliexpressProductScraper(productId, feedbackLimit, puppeterHeader
             min: data.priceModule.minActivityAmount.value,
             max: data.priceModule.maxActivityAmount.value
         },
-        shippingPrices: product.properties.variants[0].shipping
+        shippingPrices: product?.properties?.variants[0]?.shipping
     };
 
     return json;
