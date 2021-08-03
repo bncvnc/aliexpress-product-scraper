@@ -9,7 +9,7 @@ async function AliexpressProductScraper(productId, feedbackLimit, puppeterHeader
     const browser = await puppeteer.launch(puppeterHeaders)
     process.setMaxListeners(Infinity);
     const page = await browser.newPage();
-
+    await page.setDefaultNavigationTimeout(0);
     /** Scrape the aliexpress product page for details */
     await page.goto(`https://www.aliexpress.com/item/${productId}.html`,pageHeaders);
     const aliExpressData = await page.evaluate(() => runParams);
