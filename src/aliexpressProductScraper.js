@@ -6,12 +6,12 @@ const Feedback = require('./feedback');
 
 async function AliexpressProductScraper(productId, feedbackLimit, puppeterHeaders = {}) {
     const FEEDBACK_LIMIT = feedbackLimit || 10;
-    const browser = await puppeteer.launch(puppeterHeaders)
+    const browser = await puppeteer.launch({ headless : true})
     process.setMaxListeners(Infinity);
     const page = await browser.newPage();
 
     /** Scrape the aliexpress product page for details */
-    await page.goto(`https://www.aliexpress.com/item/${productId}.html`);
+    await page.goto(`https://www.aliexpress.com/item/${productId}.html`,{waitUntil: 'load', timeout: 0});
     const aliExpressData = await page.evaluate(() => runParams);
 
     /** Products shipping charges data */
