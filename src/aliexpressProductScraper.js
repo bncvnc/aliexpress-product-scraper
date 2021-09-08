@@ -238,7 +238,7 @@ async function AliexpressProductScraper(productId, feedbackLimit, puppeterHeader
         },
         ratings: {
             totalStar: 5,
-            averageStar: data.titleModule.feedbackRating.averageStar,
+            averageStar: data.titleModule.feedbackRating?.averageStar,
             totalStartCount: data.titleModule.feedbackRating.totalValidNum,
             fiveStarCount: data.titleModule.feedbackRating.fiveStarNum,
             fourStarCount: data.titleModule.feedbackRating.fourStarNum,
@@ -253,14 +253,14 @@ async function AliexpressProductScraper(productId, feedbackLimit, puppeterHeader
         feedback: feedbackData,
         variants: Variants.get(data.skuModule),
         specs: data.specsModule.props,
-        currency: data.webEnv.currency,
+        currency: data.webEnv?.currency,
         originalPrice: {
-            min: data.priceModule.minAmount.value,
-            max: data.priceModule.maxAmount.value
+            min: data.priceModule.minAmount?.value,
+            max: data.priceModule.maxAmount?.value
         },
         salePrice: {
-            min: data.priceModule.minActivityAmount.value,
-            max: data.priceModule.maxActivityAmount.value
+            min: data.priceModule.minActivityAmount?.value,
+            max: data.priceModule.maxActivityAmount?.value
         },
         shippingPrices: product?.properties?.variants[0]?.shipping
     };
