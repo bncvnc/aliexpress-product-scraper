@@ -168,14 +168,14 @@ async function AliexpressProductScraper(productId, feedbackLimit, puppeterHeader
         const ProductData = await Promise.all(skuProperties.map(async (prop, index) => {
             const propOutput = {values: [], elem: prop};
             const propTitleElem = prop.querySelector("div.sku-title");
-            propOutput.title = await propTitleElem.textContent;
+            propOutput.title =  propTitleElem.textContent;
             const propValues = Array.from(prop.querySelectorAll("li.sku-property-item"));
             await Promise.all(propValues.slice(0, 1).map(async (value, i) => {
                 if (propValues.length > 1) {
                     await value.click();
                 }
                 const nameElem = await prop.querySelector("span.sku-title-value");
-                const name = await value.innerText;
+                const name =  value.innerText;
                 const imgUrl = value?.firstChild?.firstChild?.currentSrc
                 propOutput.values.push({name, imgUrl, elem: value});
                 await value.click();

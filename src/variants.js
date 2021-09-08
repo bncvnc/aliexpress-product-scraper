@@ -5,14 +5,14 @@ module.exports = {
 
     const options = optionsLists.map(list => {
       return {
-        id: list.skuPropertyId,
-        name: list.skuPropertyName,
-        values: list.skuPropertyValues.map(val => {
+        id: list?.skuPropertyId,
+        name: list?.skuPropertyName,
+        values: list?.skuPropertyValues.map(val => {
           return {
-            id: val.propertyValueId,
-            name: val.propertyValueName,
-            displayName: val.propertyValueDisplayName,
-            image: val.skuPropertyImagePath
+            id: val?.propertyValueId,
+            name: val?.propertyValueName,
+            displayName: val?.propertyValueDisplayName,
+            image: val?.skuPropertyImagePath
           };
         })
       };
@@ -20,11 +20,11 @@ module.exports = {
 
     const lists = priceLists.map(list => {
       return {
-        skuId: list.skuId,
-        optionValueIds: list.skuPropIds,
-        availableQuantity: list.skuVal.availQuantity,
-        originalPrice: list.skuVal.skuAmount.value,
-        salePrice: list.skuVal.skuActivityAmount.value
+        skuId: list?.skuId,
+        optionValueIds: list?.skuPropIds,
+        availableQuantity: list?.skuVal?.availQuantity,
+        originalPrice: list?.skuVal?.skuAmount?.value,
+        salePrice: list?.skuVal?.skuActivityAmount?.value
       };
     });
 
